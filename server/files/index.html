@@ -9,17 +9,75 @@
         /* Part 3: Your styling goes here */
     </style>
     <script>
-        function reverseString(s) {
-            return s.split("").reverse().join("");
-        }
-
+        
         window.onload = function () {
             const xhr = new XMLHttpRequest()
             xhr.onload = function () {
                 const bodyElement = document.querySelector("body")
                 if (xhr.status == 200) {
-		            /* Part 2: Build the HTML elements here and append them to the body */ 
-                    bodyElement.append(reverseString(xhr.responseText))
+    /* Part 2: Build the HTML elements here and append them to the body */
+    
+    // 1. JSON-Text in ein echtes JavaScript-Array umwandeln
+    const movies = JSON.parse(xhr.responseText);
+
+    // 2. Durch die Filme loopen
+    movies.forEach(movie => {
+    const movieArticle = document.createElement("article");
+
+    // 1. Titel
+    const title = document.createElement("h2");
+    title.textContent = movie.Title;
+    movieArticle.append(title);
+
+    // 2. Poster
+    const poster = document.createElement("img");
+    poster.src = movie.Poster;
+    poster.alt = `Poster for ${movie.Title}`;
+    poster.style.width = "200px";
+    movieArticle.append(poster);
+
+    // 3. Allgemeine Infos (Datum, Dauer, Ratings)
+    const infoP = document.createElement("p");
+    infoP.innerHTML = `<strong>Released:</strong> ${movie.Released} | 
+                       <strong>Runtime:</strong> ${movie.Runtime} min | 
+                       <strong>Metascore:</strong> ${movie.Metascore} | 
+                       <strong>IMDb:</strong> ${movie.imdbRating}`;
+    movieArticle.append(infoP);
+
+    // 4. Plot
+    const plot = document.createElement("p");
+    plot.innerHTML = `<strong>Plot:</strong> ${movie.Plot}`;
+    movieArticle.append(plot);
+
+    // 5. Listen-Funktion für Genres, Directors, Writers, Actors
+    // Wir bauen eine kleine Hilfsfunktion für die semantischen Listen
+    const createList = (label, dataArray) => {
+        const header = document.createElement("h3");
+        header.textContent = label;
+        movieArticle.append(header);
+
+        const ul = document.createElement("ul");
+        dataArray.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            ul.append(li);
+        });
+        movieArticle.append(ul);
+    };
+
+    createList("Genres:", movie.Genres);
+    createList("Directors:", movie.Directors);
+    createList("Writers:", movie.Writers);
+    createList("Actors:", movie.Actors);
+
+    // Trennlinie für die Optik
+    movieArticle.append(document.createElement("hr"));
+
+    // Alles in den Body einfügen
+    bodyElement.append(movieArticle);
+
+    });
+
                 } else {
                     bodyElement.append("Daten konnten nicht geladen werden, Status " + xhr.status + " - " + xhr.statusText)
                 }
