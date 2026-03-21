@@ -7,6 +7,48 @@
     <title>Movies!</title>
     <style>
         /* Part 3: Your styling goes here */
+        /* 1. Body Styling */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: #f0f2f5; /* Ein leichtes Grau für den Hintergrund */
+    padding: 20px;
+}
+
+/* 2. Bilder hübsch machen */
+img {
+    border-radius: 10px;    /* Abgerundete Ecken */
+    max-width: 300px;       /* Nicht zu riesig */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ein dezenter Schatten */
+}
+
+/* 3. Überschriften */
+h1 {
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 4. Der "Kasten" für jeden Film (article) */
+article {
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 40px;    /* Abstand zwischen den Filmen */
+    padding: 20px;          /* Abstand vom Text zum Rand des Kastens */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Tiefenwirkung */
+}
+
+/* 6. Styling für die Genre-Tags */
+/* Damit das funktioniert, müssen wir im JavaScript die Genres in ein <span> packen */
+.genre {
+    background-color: #e1f5fe;
+    color: #0288d1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    display: inline-block;
+    font-size: 0.9em;
+    border: 1px solid #b3e5fc;
+}
     </style>
     <script>
         
@@ -51,24 +93,38 @@
 
     // 5. Listen-Funktion für Genres, Directors, Writers, Actors
     // Wir bauen eine kleine Hilfsfunktion für die semantischen Listen
-    const createList = (label, dataArray) => {
-        const header = document.createElement("h3");
-        header.textContent = label;
-        movieArticle.append(header);
+    // 5. Genres als "Spans" (wichtig für das CSS-Styling aus Part 3)
+const genreHeader = document.createElement("h3");
+genreHeader.textContent = "Genres:";
+movieArticle.append(genreHeader);
 
-        const ul = document.createElement("ul");
-        dataArray.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            ul.append(li);
-        });
-        movieArticle.append(ul);
-    };
+const genreContainer = document.createElement("div"); 
+movie.Genres.forEach(g => {
+    const s = document.createElement("span");
+    s.classList.add("genre"); // Das aktiviert dein CSS (.genre { ... })
+    s.textContent = g;
+    genreContainer.append(s);
+});
+movieArticle.append(genreContainer);
 
-    createList("Genres:", movie.Genres);
-    createList("Directors:", movie.Directors);
-    createList("Writers:", movie.Writers);
-    createList("Actors:", movie.Actors);
+// 6. Die restlichen Infos wieder als normale Listen
+const createList = (label, dataArray) => {
+    const header = document.createElement("h3");
+    header.textContent = label;
+    movieArticle.append(header);
+
+    const ul = document.createElement("ul");
+    dataArray.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.append(li);
+    });
+    movieArticle.append(ul);
+};
+
+createList("Directors:", movie.Directors);
+createList("Writers:", movie.Writers);
+createList("Actors:", movie.Actors);
 
     // Trennlinie für die Optik
     movieArticle.append(document.createElement("hr"));
