@@ -18,7 +18,7 @@ app.get('/movies', function (req, res) {
     "Writers": ["J.R.R. Tolkien", "Fran Walsh", "Philippa Boyens"], // Umbenannt & als Array
     "Actors": ["Elijah Wood", "Ian McKellen", "Orlando Bloom"],    // Als Array
     "Plot": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BN2IxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Poster": "https://m.media-amazon.com/images/I/81V36dsqyyL.jpg",
     "Metascore": 92,                     // Als Nummer
     "imdbRating": 8.9                    // Als Nummer
 },
@@ -32,7 +32,7 @@ app.get('/movies', function (req, res) {
     "Writers": ["David Franzoni", "John Logan", "William Nicholson"], // Plural & Array
     "Actors": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"], // Als Array
     "Plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Poster": "https://www.framerated.co.uk/wp-content/uploads/2025/04/gladiator01-978x652.jpg",
     "Metascore": 67,                      // Als Nummer
     "imdbRating": 8.5                     // Als Nummer
 },
@@ -46,7 +46,7 @@ app.get('/movies', function (req, res) {
     "Writers": ["Randall Wallace"],       // Plural & Array
     "Actors": ["Mel Gibson", "Sophie Marceau", "Patrick McGoohan"], // Als Array
     "Plot": "Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNGMxZDBhNGQtYTZINI00N2UzLWI4NDEtNmUzNWM2NTdmZDA0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Poster": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/2ba2c3b2-4c2c-4e27-91d3-5ec5ff24b904/compose?aspectRatio=1.78&format=webp&width=1200",
     "Metascore": 68,                      // Nummer
     "imdbRating": 8.3                     // Nummer
 }
